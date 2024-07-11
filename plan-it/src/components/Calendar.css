@@ -1,0 +1,19 @@
+.rbc-calendar {
+  display: flex;
+  position: absolute;
+  left: 200px;
+  width: 1000px;
+  top: 60px;
+}
+
+.rbc-day-bg.rbc-today {
+  background-color: transparent;
+  background-color: rgb(245, 203, 152);
+  border: none;
+  border: 0px solid rgb(254, 208, 153);
+  border-radius: 10px;
+}
+
+.rbc-day-bg.rbc-today:hover {
+  background-color: #e9e6e6;
+}

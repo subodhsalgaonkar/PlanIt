@@ -1,8 +1,9 @@
-import { Calendar, dayjsLocalizer } from 'react-big-calendar'
-import dayjs from 'dayjs'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import { Calendar, dayjsLocalizer } from "react-big-calendar";
+import dayjs from "dayjs";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "./Calendar.css";
 
-const localizer = dayjsLocalizer(dayjs)
+const localizer = dayjsLocalizer(dayjs);
 
 const MyCalendar = ({ events }) => (
   <div>
@@ -14,6 +15,6 @@ const MyCalendar = ({ events }) => (
       style={{ height: 500 }}
     />
   </div>
-)
+);
 
 export default MyCalendar;
