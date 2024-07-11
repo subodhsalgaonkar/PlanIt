@@ -6,13 +6,14 @@ import "./Calendar.css";
 const localizer = dayjsLocalizer(dayjs);
 
 const MyCalendar = ({ events }) => (
-  <div>
+  <div className="static">
     <Calendar
       localizer={localizer}
       events={events}
       startAccessor="start"
       endAccessor="end"
-      style={{ height: 500 }}
+      style={{ height: "90vh" ,width:"90vw" }}
+      className="absolute bottom-0 right-0"
     />
   </div>
 );

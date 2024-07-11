@@ -1,14 +1,11 @@
-.rbc-calendar {
+/* .rbc-calendar {
   display: flex;
-  position: absolute;
-  left: 200px;
-  width: 1000px;
-  top: 60px;
-}
+  position: fixed;
+  justify-content: right;
+  align-items: end;
+  
+} */
 
-.calendar-container {
-  height: 100vh ;
-}
 
 .rbc-day-bg.rbc-today {
   background-color: transparent;
