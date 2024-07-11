@@ -6,6 +6,10 @@
   top: 60px;
 }
 
+.calendar-container {
+  height: 100vh ;
+}
+
 .rbc-day-bg.rbc-today {
   background-color: transparent;
   background-color: rgb(245, 203, 152);
