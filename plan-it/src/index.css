@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.rbc-toolbar {
+    @apply fixed top-4 left-1/4 w-3/5 ;
+}
+
+
