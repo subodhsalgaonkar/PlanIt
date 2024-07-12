@@ -1,24 +1,22 @@
-import { useState } from 'react'
-import './App.css'
-import MyCalendar from './components/Calendar'
-import CalendarHeader from './components/CalendarHeader'
-import SideBar from './components/SideBar'
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import MyCalendar from "./components/Calendar";
+import Signup from "./components/Authentication/Signup"; // Assuming Signup component is in components folder
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <Router>
       <div className="h-screen flex flex-col">
-        <CalendarHeader/>
         <div className="flex flex-1">
-          <SideBar/>
-          <MyCalendar/>
+          <Routes>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={<MyCalendar />} />
+          </Routes>
         </div>
       </div>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
