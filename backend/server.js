@@ -1,7 +1,6 @@
-// server.js
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors'; // Import CORS package
+import cors from 'cors';
 import { User, Event, Community, UserCommunity } from './models.js';
 
 const app = express();
@@ -44,15 +43,34 @@ app.post('/signup', async (req, res) => {
         res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
         console.error('Error creating user:', error);
-        if (error.errInfo?.details?.schemaRulesNotSatisfied) {
-            error.errInfo.details.schemaRulesNotSatisfied.forEach(rule => {
-                console.error('Missing properties:', rule.missingProperties);
-            });
-        }
         res.status(500).json({ message: 'Failed to create user' });
     }
 });
 
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        // Find user by username
+        const user = await User.findOne({ username });
+
+        // If user not found, return error
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Compare plain text passwords
+        if (password !== user.password) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        // Login successful
+        res.json({ message: 'Login successful' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
 
 // Example route to get all users
 app.get('/users', async (req, res) => {
