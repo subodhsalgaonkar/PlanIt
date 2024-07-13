@@ -5,35 +5,39 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./Calendar.css";
 import SideBar from "./SideBar";
 import CalendarHeader from "./CalendarHeader";
+import { useNavigate } from "react-router-dom";
 
 const localizer = dayjsLocalizer(dayjs);
 
 const MyCalendar = ({ events }) => {
-  const [username, setUsername] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login status
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    setUsername(storedUsername);
-    // Optionally retrieve the password if needed (not recommended for display)
-    // const storedPassword = localStorage.getItem("password");
-    // console.log("Stored Password: ", storedPassword);
-  }, []);
+    const checkLoginStatus = () => {
+      const isLoggedInStorage = localStorage.getItem("isLoggedIn") === "true";
+      setIsLoggedIn(isLoggedInStorage);
+      if (!isLoggedInStorage) {
+        navigate("/login"); // Redirect to login if not logged in
+      }
+    };
+    checkLoginStatus();
+  }, [navigate]);
 
   return (
     <div className="">
       <CalendarHeader />
       <SideBar />
-      <div className="fixed top-0 left-0 p-4">
-        <h2>Welcome, {username}</h2>
-      </div>
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: "91.2vh" }}
-        className="fixed bottom-0 right-0 w-10/12"
-      />
+      {isLoggedIn && (
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: "91.2vh" }}
+          className="fixed bottom-0 right-0 w-10/12"
+        />
+      )}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import MyCalendar from "./components/Calendar";
 import Signup from "./components/Authentication/Signup"; // Assuming Signup component is in components folder
 import Login from "./components/Authentication/Login";
 import Profile from "./components/Profile";
+import LandingPage from "./components/Landing";
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
       <div className="h-screen flex flex-col">
         <div className="flex flex-1">
           <Routes>
+            <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/" element={<MyCalendar />} />
+            <Route path="/mycalendar" element={<MyCalendar />} />
           </Routes>
         </div>
       </div>

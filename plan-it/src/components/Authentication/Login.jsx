@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -7,6 +7,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState("");
+
+  useEffect(() => {
+    // Reset the isLoggedIn flag and clear the username
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.removeItem("username");
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -17,14 +23,15 @@ const Login = () => {
       console.log(response.data);
 
       if (response.data.message === "Login successful") {
-        localStorage.setItem("username", username); // Store username in localStorage
-        navigate("/"); // Redirect to home page after successful login
+        localStorage.setItem("isLoggedIn", "true"); // Store login status
+        localStorage.setItem("username", username); // Store username
+        navigate("/mycalendar"); // Redirect to mycalendar upon successful login
       } else {
         setLoginError(response.data.message); // Set login error message
       }
     } catch (error) {
       console.error("Error:", error);
-      setLoginError("Invalid username or password."); // Set login error message for internal server errors
+      setLoginError("Invalid username or password.");
     }
   };
 

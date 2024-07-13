@@ -1,5 +1,4 @@
-// Signup.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../../App.css";
@@ -10,6 +9,11 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [signupError, setSignupError] = useState("");
+
+  useEffect(() => {
+    // Reset the isLoggedIn flag
+    localStorage.setItem("isLoggedIn", "false");
+  }, []);
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
