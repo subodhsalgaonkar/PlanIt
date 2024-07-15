@@ -22,16 +22,21 @@ export default function SideBar() {
     <aside className="border p-5 w-2/12">
       <CreateButton />
       <div className="mt-4">
-        <SmallCalendar
+        {/* <SmallCalendar
           selectedDate={selectedDate}
           onDateChange={setSelectedDate}
-        />
+        /> */}
       </div>
       <div className="mt-4">
         <Link to="/profile">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Profile
-          </button>
+          <div className="cursor-pointer flex justify-between items-center p-2 bg-gray-800 text-white rounded-md mb-4">
+            <span>Profile</span>
+          </div>
+        </Link>
+        <Link to="/mycalendar">
+          <div className="cursor-pointer flex justify-between items-center p-2 bg-gray-800 text-white rounded-md mb-4">
+            <span>Home</span>
+          </div>
         </Link>
         <Dropdown name="Communities" values={myCalendars} />
         <Dropdown name="Other calendars" values={otherCalendars} />

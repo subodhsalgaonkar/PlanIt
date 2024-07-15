@@ -32,7 +32,7 @@ app.post('/signup', async (req, res) => {
         // Check if user already exists
         const existingUser = await User.findOne({ username });
         if (existingUser) {
-            return res.status(400).json({ message: 'User already exists' });
+            return res.status(400).json({ message: 'Username already exists' });
         }
 
         // Create new user
@@ -42,10 +42,17 @@ app.post('/signup', async (req, res) => {
         console.log('User created successfully');
         res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
-        console.error('Error creating user:', error);
-        res.status(500).json({ message: 'Failed to create user' });
+        if (error.code === 11000) {
+            // Duplicate username error
+            console.error('Error: Duplicate username');
+            res.status(400).json({ message: 'Username already exists' });
+        } else {
+            console.error('Error creating user:', error);
+            res.status(500).json({ message: 'Failed to create user' });
+        }
     }
 });
+
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -64,13 +71,14 @@ app.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        // Login successful
-        res.json({ message: 'Login successful' });
+        // Login successful, return user data
+        res.json({ message: 'Login successful', user: { _id: user._id, username: user.username } });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
 
 // Example route to get all users
 app.get('/users', async (req, res) => {
@@ -80,6 +88,27 @@ app.get('/users', async (req, res) => {
     } catch (error) {
         console.error('Error fetching users', error);
         res.status(500).send('Internal Server Error');
+    }
+});
+
+// Route to handle updating user name
+app.put('/users/:id', async (req, res) => {
+    const userId = req.params.id;
+    const { name } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.name = name;
+        await user.save();
+
+        res.json({ message: 'User updated successfully' });
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ message: 'Failed to update user' });
     }
 });
 
