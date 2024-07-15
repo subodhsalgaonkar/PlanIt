@@ -47,11 +47,12 @@ const Signup = () => {
     }
   };
 
-  return (
-    <div className="bg-grey-lighter min-h-screen flex flex-col">
+  return ( 
+    <div className="flex items-center justify-center w-screen">
+    <div className="bg-grey-lighter">
       <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-        <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-          <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+        <div className="bg-white px-6 py-8 rounded shadow-xl shadow-green-100 w-full">
+          <h1 className="mb-8 text-3xl text-center font-bold text-green-500">Sign up</h1>
           <input
             type="text"
             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -86,7 +87,7 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="w-full text-center py-3 rounded border border-black bg-blue-500 text-white hover:bg-blue-700 focus:outline-none my-1"
+            className="w-full text-center py-3 rounded border bg-green-500 text-white hover:bg-green-600 focus:outline-none my-1"
             onClick={handleSignup}
           >
             Create Account
@@ -121,6 +122,7 @@ const Signup = () => {
           .
         </div>
       </div>
+    </div>
     </div>
   );
 };

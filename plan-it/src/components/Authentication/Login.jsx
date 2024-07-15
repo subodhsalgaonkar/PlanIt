@@ -36,9 +36,10 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-grey-lighter min-h-screen flex flex-col items-center justify-center">
-      <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full max-w-md">
-        <h1 className="mb-8 text-3xl text-center">Login</h1>
+    <div className="flex items-center justify-center w-screen">
+    <div className="bg-grey-lighter">
+      <div className="bg-white px-6 py-8 rounded-xl text-black w-full max-w-md shadow-xl shadow-green-100">
+        <h1 className="mb-8 text-3xl text-center font-bold text-green-500">Login</h1>
         <input
           type="text"
           className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -64,7 +65,7 @@ const Login = () => {
           <p className="text-red-500 mb-4 text-center">{loginError}</p>
         )}
         <button
-          className="w-full text-center py-3 rounded border border-black bg-blue-500 text-white hover:bg-blue-700 focus:outline-none my-1"
+          className="w-full text-center py-3 rounded border bg-green-500 text-white hover:bg-green-600 focus:outline-none my-1"
           onClick={handleLogin}
         >
           Login
@@ -80,6 +81,7 @@ const Login = () => {
           .
         </div>
       </div>
+    </div>
     </div>
   );
 };
