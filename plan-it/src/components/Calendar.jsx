@@ -24,8 +24,21 @@ const MyCalendar = ({ events }) => {
     checkLoginStatus();
   }, [navigate]);
 
+  const handleAddEvent = () => {
+    // Handle navigation to the add event page or logic to add event
+    console.log("Add Event clicked");
+  };
+
   return (
-    <div className="">
+    <div className="relative">
+      <div className="absolute top-4 right-4 z-10">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleAddEvent}
+        >
+          Add Event
+        </button>
+      </div>
       <CalendarHeader />
       <SideBar />
       {isLoggedIn && (
@@ -35,7 +48,7 @@ const MyCalendar = ({ events }) => {
           startAccessor="start"
           endAccessor="end"
           style={{ height: "91.2vh" }}
-          className="fixed bottom-0 right-0 w-10/12"
+          className="fixed bottom-0 right-0 w-10/12 z-0"
         />
       )}
     </div>
