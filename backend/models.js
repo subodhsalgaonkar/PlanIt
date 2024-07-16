@@ -9,24 +9,19 @@ const UserSchema = new Schema({
 });
 
 const EventSchema = new Schema({
-    event_id: { type: String, unique: true },
-    date: { type: Date, default: Date.now }, // Add a default date
-    time: { type: String, default: '' }, // Add a default value for optional fields
+    date: { type: Date, default: Date.now },
+    time: { type: String, default: '' },
     title: { type: String, default: '' },
     description: { type: String, default: '' },
-    photo: { type: String, default: '' },
-    community_id: { type: String, default: '' },
-    user_id: { type: String, default: '' }
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
+
 const CommunitySchema = new Schema({
-    community_id: { type: String, unique: true },
     community_title: { type: String, default: '' } // Add a default value for optional fields
 });
 
 const UserCommunitySchema = new Schema({
-    user_id: { type: String, default: '' }, // Add a default value for optional fields
-    community_id: { type: String, default: '' } // Add a default value for optional fields
 });
 
 // Create models based on schemas

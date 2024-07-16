@@ -79,6 +79,26 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Route to handle adding new events
+app.post('/events', async (req, res) => {
+    const { date, time, title, description, userId } = req.body;
+
+    try {
+        const newEvent = new Event({
+            date,
+            time,
+            title,
+            description,
+            userId
+        });
+
+        await newEvent.save();
+        res.status(201).json({ message: 'Event created successfully', event: newEvent });
+    } catch (error) {
+        console.error('Error creating event:', error);
+        res.status(500).json({ message: 'Failed to create event' });
+    }
+});
 
 // Example route to get all users
 app.get('/users', async (req, res) => {
