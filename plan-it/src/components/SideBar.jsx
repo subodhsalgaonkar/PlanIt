@@ -24,7 +24,7 @@ export default function SideBar() {
       <CreateButton />
       <div className="mt-4">
         {/* <SmallCalendar
-          selectedDate={selectedDate}
+          selectedDate={selectedDate}     this is the small calendar in the sidebar which we dont want
           onDateChange={setSelectedDate}
         /> */}
       </div>
