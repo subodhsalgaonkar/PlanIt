@@ -19,6 +19,7 @@ const MyCalendar = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     const checkLoginStatus = () => {
@@ -34,7 +35,9 @@ const MyCalendar = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/events");
+        const response = await axios.get("http://localhost:3000/events", {
+          params: { userId },
+        });
         const fetchedEvents = response.data.map((event) => ({
           ...event,
           start: new Date(event.date),
@@ -45,8 +48,10 @@ const MyCalendar = () => {
         console.error("Error fetching events:", error);
       }
     };
-    fetchEvents();
-  }, []);
+    if (userId) {
+      fetchEvents();
+    }
+  }, [userId]);
 
   const handleAddEvent = () => {
     setShowModal(true); // Show the modal when "Add Event" is clicked
@@ -58,7 +63,6 @@ const MyCalendar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem("userId");
     try {
       const response = await axios.post("http://localhost:3000/events", {
         date,

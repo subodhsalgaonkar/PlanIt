@@ -132,16 +132,19 @@ app.put('/users/:id', async (req, res) => {
     }
 });
 
-// Example route to get all events
+// Route to handle fetching events for a specific user
 app.get('/events', async (req, res) => {
+    const userId = req.query.userId;
+
     try {
-        const events = await Event.find();
+        const events = await Event.find({ userId });
         res.json(events);
     } catch (error) {
         console.error('Error fetching events', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 // Example route to get all communities
 app.get('/communities', async (req, res) => {
