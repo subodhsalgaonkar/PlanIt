@@ -18,7 +18,26 @@ const EventSchema = new Schema({
 
 
 const CommunitySchema = new Schema({
-    community_title: { type: String, default: '' } // Add a default value for optional fields
+    community_title: { type: String, default: '' },
+    type: {
+        type: String,
+        enum: ['Sports', 'Education', 'Entertainment', 'Health', 'Technology', 'Gaming', 'Music', 'Art', 'Science', 'Other'],
+        default: 'Other'
+    },
+    security: {
+        type: String,
+        enum: ['public', 'private'],
+        default: 'public'
+    },
+    code: {
+        type: String,
+        required: function () { return this.security === 'private'; }
+    },
+    userID: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 });
 
 const UserCommunitySchema = new Schema({

@@ -95,6 +95,12 @@ const MyCalendar = () => {
       console.error("Error adding event:", error);
     }
   };
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userId");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
 
   return (
     <div className="relative">
@@ -104,6 +110,12 @@ const MyCalendar = () => {
           onClick={handleAddEvent}
         >
           Add Event
+        </button>
+        <button
+          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleLogout}
+        >
+          Logout
         </button>
       </div>
       <CalendarHeader />

@@ -7,6 +7,7 @@ import Dropdown from "./Dropdown";
 export default function SideBar() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const myCalendars = [
+    "Communities", // Add the special value as the first item
     "SYIT 24",
     "Office",
     "GYM",

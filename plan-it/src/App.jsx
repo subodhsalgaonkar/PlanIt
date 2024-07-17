@@ -6,6 +6,7 @@ import Signup from "./components/Authentication/Signup"; // Assuming Signup comp
 import Login from "./components/Authentication/Login";
 import Profile from "./components/Profile";
 import LandingPage from "./components/Landing";
+import Communities from "./components/Communities";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/mycalendar" element={<MyCalendar />} />
+            <Route path="/communities" element={<Communities />} />
           </Routes>
         </div>
       </div>

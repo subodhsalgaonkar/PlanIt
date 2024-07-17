@@ -146,6 +146,27 @@ app.get('/events', async (req, res) => {
 });
 
 
+// Route to create a community
+app.post('/communities', async (req, res) => {
+    const { community_title, type, security, code, userID } = req.body;
+
+    try {
+        const newCommunity = new Community({
+            community_title,
+            type,
+            security,
+            code,
+            userID
+        });
+
+        await newCommunity.save();
+        res.status(201).json({ message: 'Community created successfully', community: newCommunity });
+    } catch (error) {
+        console.error('Error creating community:', error);
+        res.status(500).json({ message: 'Failed to create community' });
+    }
+});
+
 // Example route to get all communities
 app.get('/communities', async (req, res) => {
     try {
