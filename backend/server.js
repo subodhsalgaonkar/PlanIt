@@ -6,6 +6,8 @@ import { User, Event, Community, UserCommunity } from './models.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 const uri = 'mongodb+srv://kungfubodh:subodhsalgaonkar@plan-it.dhw8ggv.mongodb.net/';
+// mongodb+srv://<username>:<password>@plan-it.dhw8ggv.mongodb.net/
+// const uri = 'mongodb+srv://elitehitman:elitehitman2910@plan-it.dhw8ggv.mongodb.net/';
 
 // Middleware to parse JSON bodies
 app.use(express.json());

@@ -117,7 +117,7 @@ export default function Addeventform({ setShowModal }) {
                 >
                   Cancel
                 </button>
-              </div>
+              </div>  
             </form>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 const uri = 'mongodb+srv://kungfubodh:subodhsalgaonkar@plan-it.dhw8ggv.mongodb.net/';
+// const uri = 'mongodb+srv://elitehitman:elitehitman2910@plan-it.dhw8ggv.mongodb.net/';
 
 let db;
 
