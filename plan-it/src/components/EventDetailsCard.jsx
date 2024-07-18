@@ -6,12 +6,14 @@ const EventDetailsCard = ({ event, onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 bg-fixed ">
       <div className="relative p-8 rounded-lg shadow-lg w-full max-w-md max-h-80 overflow-y-auto bg-blue-300" >
-        <img src={eventbackground} alt="" className='rounded-md'/>
+        <img src={eventbackground} alt="" className='rounded-md mt-2'/>
         <button
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 h-10 w-10 rounded-full hover:bg-blue-400"
+          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 h-10 w-10 rounded-full hover:bg-blue-400 flex justify-center items-center"
           onClick={onClose}
         >
-          &times;
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343">
+            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+          </svg>
         </button>
         <h3 className="text-2xl font-bold mb-4">{event.title}
         </h3>
