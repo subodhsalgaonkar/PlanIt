@@ -23,7 +23,7 @@ PlanIt is a web application designed to help users organize their schedules effi
 
 ## Installation
 1. Clone this repository: `git clone https://github.com/subodhsalgaonkar/PlanIt.git`
-2. Navigate to the project directory: `cd repo_name`
+2. Navigate to the project directory: `cd PlanIt/plan-it`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
 5. Access the application at `http://localhost:5173` in your web browser.
