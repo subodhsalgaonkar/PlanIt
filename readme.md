@@ -22,7 +22,7 @@ PlanIt is a web application designed to help users organize their schedules effi
 - **Mongoose: ODM (Object Data Modeling) library for MongoDB and Node.js, providing a schema-based solution to model application data.
 
 ## Installation
-1. Clone this repository: `git clone https://github.com/subodhsalgaonkar/reponame.git`
+1. Clone this repository: `git clone https://github.com/subodhsalgaonkar/PlanIt.git`
 2. Navigate to the project directory: `cd repo_name`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
